@@ -90,7 +90,7 @@ class BaseCAM:
         self.outputs = outputs = torch.Tensor(self.activations_and_grads(input_tensor))
 
         if targets is None:
-            target_categories = np.argmax(outputs.data.numpy().cpu(), axis=-1)
+            target_categories = np.argmax(outputs.cpu().data.numpy(), axis=-1)
             targets = [ClassifierOutputTarget(category) for category in target_categories]
 
         if self.uses_gradients:
