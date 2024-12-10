@@ -52,7 +52,14 @@ class BaseCAM:
         activations: torch.Tensor,
         grads: torch.Tensor,
     ) -> np.ndarray:
-        raise Exception("Not Implemented")
+        if activations.shape != grads.shape:
+            raise ValueError("Activations and gradients must have the same shape.")
+
+    # Global average pooling over spatial dimensions
+        weights = torch.mean(grads, dim=(2, 3))  # Average along width and height
+
+    # Convert weights to numpy format
+        return weights.cpu().data.numpy()
 
     def get_cam_image(
         self,
