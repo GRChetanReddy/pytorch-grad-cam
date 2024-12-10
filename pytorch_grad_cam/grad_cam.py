@@ -11,7 +11,8 @@ class GradCAM(BaseCAM):
             self).__init__(
             model,
             target_layers,
-            reshape_transform)
+            reshape_transform,
+            uses_gradients=False)
 
     def get_cam_weights(self,
                         input_tensor,
