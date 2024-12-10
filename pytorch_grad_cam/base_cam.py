@@ -87,7 +87,7 @@ class BaseCAM:
         if self.compute_input_gradient:
             input_tensor = torch.autograd.Variable(input_tensor, requires_grad=True)
 
-        self.outputs = outputs = torch.Tensor(self.activations_and_grads(input_tensor))
+        self.outputs = outputs = self.activations_and_grads(input_tensor)
 
         if targets is None:
             target_categories = np.argmax(outputs.cpu().data.numpy(), axis=-1)
