@@ -17,7 +17,7 @@ class BaseCAM:
         target_layers: List[torch.nn.Module],
         reshape_transform: Callable = None,
         compute_input_gradient: bool = False,
-        uses_gradients: bool = True,
+        uses_gradients: bool = False,
         tta_transforms: Optional[tta.Compose] = None,
     ) -> None:
         self.model = model.eval()
